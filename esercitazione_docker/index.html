@@ -1,13 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esercitazione Docker</title>
+    <title>Webserver Dinamico - Colori</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            margin-top: 100px; 
+            transition: background-color 0.5s ease; /* Effetto sfumato */
+        }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            display: inline-block; 
+        }
+        button { 
+            padding: 12px 24px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            border: none; 
+            border-radius: 6px; 
+            background-color: #28a745; 
+            color: white; 
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #218838; }
+        #codice-colore { 
+            font-weight: bold; 
+            font-size: 1.2em; 
+            margin-top: 20px; 
+            display: block;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-<h1>Esercitazione Docker</h1>
-<p>Questa è una semplice esercitazione per testare Docker.</p>
+
+    <div class="card">
+        <h2>Generatore di Colori Casuali 🎨</h2>
+        <p>Clicca il bottone per cambiare lo sfondo del webserver!</p>
+        <button onclick="cambiaColore()">Cambia Colore</button>
+        <span id="codice-colore">#FFFFFF</span>
+    </div>
+
+    <script>
+        function cambiaColore() {
+            // Genera un colore esadecimale casuale
+            const lettere = '0123456789ABCDEF';
+            let colore = '#';
+            for (let i = 0; i < 6; i++) {
+                colore += lettere[Math.floor(Math.random() * 16)];
+            }
+            
+            // Applica il colore allo sfondo e aggiorna il testo
+            document.body.style.backgroundColor = colore;
+            document.getElementById('codice-colore').innerText = colore;
+        }
+    </script>
 
 </body>
 </html>
